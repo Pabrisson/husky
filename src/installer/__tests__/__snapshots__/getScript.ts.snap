@@ -47,7 +47,7 @@ else
       debug \\"source ~/.huskyrc\\"
       . ~/.huskyrc
     fi
-    node_modules/run-node/run-node \\"$scriptPath\\" $hookName \\"$gitParams\\"
+    sh $(pwd)\\"/hooks/\\"$hookName\\".sh\\" \\"$gitParams\\"
   else
     echo \\"Can't find Husky, skipping $hookName hook\\"
     echo \\"You can reinstall it using 'npm install husky --save-dev' or delete this hook\\"

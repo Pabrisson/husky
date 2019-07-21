@@ -1,18 +1,17 @@
 {
   "name": "@pab78430/husky",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Prevents bad commit or push (git hooks, pre-commit/precommit, pre-push/prepush, post-merge/postmerge and all that stuff...)",
   "bin": {
     "husky-run": "./run.js",
     "husky-upgrade": "./lib/upgrader/bin.js"
   },
-  "main": "node ./run.js",
   "engines": {
     "node": ">=8.6.0"
   },
   "scripts": {
     "test": "npm run lint && jest",
-    "_install": "node husky install",
+    "install": "node husky install",
     "preuninstall": "node husky uninstall",
     "devinstall": "npm run build && npm run _install -- node_modules/husky && node scripts/dev-fix-path",
     "devuninstall": "npm run build && npm run preuninstall -- node_modules/husky",

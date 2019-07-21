@@ -6,7 +6,7 @@
     "husky-run": "./run.js",
     "husky-upgrade": "./lib/upgrader/bin.js"
   },
-  "main": "node lib/installer/bin.js",
+  "main": "node ./run.js",
   "engines": {
     "node": ">=8.6.0"
   },

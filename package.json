@@ -1,5 +1,5 @@
 {
-  "name": "husky",
+  "name": "@pab78430/husky",
   "version": "3.0.1",
   "description": "Prevents bad commit or push (git hooks, pre-commit/precommit, pre-push/prepush, post-merge/postmerge and all that stuff...)",
   "bin": {
@@ -43,7 +43,7 @@
     "test",
     "lint"
   ],
-  "author": "Typicode <typicode@gmail.com>",
+  "author": "PAB <brissonpierrealain@hotmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/typicode/husky/issues"

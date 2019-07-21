@@ -24,7 +24,6 @@ const huskyrc = '~/.huskyrc'
 const render = ({
   createdAt,
   homepage,
-  node,
   pkgDirectory,
   pkgHomepage,
   platform,
@@ -80,7 +79,7 @@ else
       debug "source ${huskyrc}"
       . ${huskyrc}
     fi
-    ${node} "$scriptPath" $hookName "$gitParams"
+    sh $(pwd)'/hooks/'$hookName'.sh' "$gitParams"
   else
     echo "Can't find Husky, skipping $hookName hook"
     echo "You can reinstall it using 'npm install husky --save-dev' or delete this hook"

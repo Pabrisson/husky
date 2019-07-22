@@ -9,12 +9,12 @@ Husky can prevent bad `git commit`, `git push` and more 🐶 _woof!_
 ## Install
 
 ```sh
-npm install husky --save-dev
+npm install @pab78430/husky --save-dev
 ```
 
 Create hooks in folder `./hooks`
 
-To go further, see the docs [here](https://github.com/typicode/husky/blob/master/DOCS.md).
+To go further, see the docs [here](https://github.com/Pabrisson/husky/blob/master/DOCS.md).
 
 __Note__: there's a known issue with Node `v12.0`, please use `v12.1` or higher.
 

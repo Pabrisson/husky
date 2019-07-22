@@ -26,14 +26,11 @@ const render = ({
   homepage,
   pkgDirectory,
   pkgHomepage,
-  platform,
-  runScriptPath,
-  version
+  runScriptPath
 }: Context): string => `#!/bin/sh
 ${huskyIdentifier}
 
 # Hook created by Husky
-#   Version: ${version}
 #   At: ${createdAt}
 #   See: ${homepage}
 
@@ -62,15 +59,6 @@ if [ "$\{HUSKY_USE_YARN}" = "true" ] || [ "$\{HUSKY_USE_YARN}" = "1" ]; then
   debug "calling husky through Yarn"
   yarn husky-run $hookName "$gitParams"
 else
-  ${
-    platform === 'win32'
-      ? ''
-      : `
-  if ! command -v node >/dev/null 2>&1; then
-    echo "Info: can't find node in PATH, trying to find a node binary on your system"
-  fi
-  `
-  }
   if [ -f "$scriptPath" ]; then
     # if [ -t 1 ]; then
     #   exec < /dev/tty
@@ -79,7 +67,7 @@ else
       debug "source ${huskyrc}"
       . ${huskyrc}
     fi
-    sh $(pwd)'/hooks/'$hookName'.sh' "$gitParams"
+    bash $(pwd)'/hooks/'$hookName'.sh' "$gitParams"
   else
     echo "Can't find Husky, skipping $hookName hook"
     echo "You can reinstall it using 'npm install husky --save-dev' or delete this hook"

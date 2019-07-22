@@ -1,7 +1,6 @@
 import del from 'del'
 import fs from 'fs'
 import mkdirp from 'mkdirp'
-import os from 'os'
 import path from 'path'
 import tempy from 'tempy'
 import * as installer from '../'
@@ -87,11 +86,6 @@ describe('install', (): void => {
     install()
     expectHookToExist(defaultHookFilename)
 
-    const hook = readFile(defaultHookFilename)
-    const node =
-      os.platform() === 'win32' ? 'node' : 'node_modules/run-node/run-node'
-    expect(hook).toMatch(node)
-
     uninstall()
     expect(exists(defaultHookFilename)).toBeFalsy()
   })
@@ -166,12 +160,6 @@ describe('install', (): void => {
       huskyDir,
       requireRunNodePath
     })
-    const hook = readFile('.git/hooks/pre-commit')
-
-    const node =
-      os.platform() === 'win32' ? 'node' : 'node_modules/run-node/run-node'
-    expect(hook).toMatch(node)
-    expect(hook).toMatch('A/B/node_modules/husky/run.js')
 
     uninstall({ huskyDir })
     expect(exists('.git/hooks/pre-commit')).toBeFalsy()

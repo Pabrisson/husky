@@ -55,23 +55,18 @@ if [ "$\{HUSKY_SKIP_HOOKS}" = "true" ] || [ "$\{HUSKY_SKIP_HOOKS}" = "1" ]; then
   exit 0
 fi
 
-if [ "$\{HUSKY_USE_YARN}" = "true" ] || [ "$\{HUSKY_USE_YARN}" = "1" ]; then
-  debug "calling husky through Yarn"
-  yarn husky-run $hookName "$gitParams"
-else
-  if [ -f "$scriptPath" ]; then
-    # if [ -t 1 ]; then
-    #   exec < /dev/tty
-    # fi
-    if [ -f ${huskyrc} ]; then
-      debug "source ${huskyrc}"
-      . ${huskyrc}
-    fi
-    bash $(pwd)'/hooks/'$hookName'.sh' "$gitParams"
-  else
-    echo "Can't find Husky, skipping $hookName hook"
-    echo "You can reinstall it using 'npm install husky --save-dev' or delete this hook"
+if [ -f "$scriptPath" ]; then
+  # if [ -t 1 ]; then
+  #   exec < /dev/tty
+  # fi
+  if [ -f ${huskyrc} ]; then
+    debug "source ${huskyrc}"
+    . ${huskyrc}
   fi
+  bash $(pwd)'/hooks/'$hookName'.sh' "$gitParams"
+else
+  echo "Can't find Husky, skipping $hookName hook"
+  echo "You can reinstall it using 'npm install husky --save-dev' or delete this hook"
 fi
 `
 
